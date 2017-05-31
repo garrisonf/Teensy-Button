@@ -19,7 +19,7 @@ import java.lang.reflect.Method;
 import java.util.Set;
 import java.util.UUID;
 
-/**
+/*
  * Created by Kyle Dillon on 4/29/14.
  *
  * Bluetooth class that encapsulates all Bluetooth connection and communication functionality.
