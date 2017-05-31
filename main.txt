@@ -1,0 +1,30 @@
+   /**This function is called in Bluetooth.java when data is received**/
+    public void receiveData(byte[] data) {
+
+        // If the received data exists and is does not equal zero, bluetooth is active
+        //let the app accept data, display depending on what flag is seen in data[0]
+        //all data sent to app MUST be delimited by a newline character
+        if(data.length > 0) {
+            //Toast.makeText(getApplicationContext(), ("Got: " + (char)data[0]), Toast.LENGTH_SHORT).show();
+            activeFlag = 't';
+            if ((data[0] != 0)&&(data.length>1)) {
+                runningFlag=true;
+                displayData(data);
+            }
+            else{
+                Toast.makeText(getApplicationContext(), ("Expected more data after " + (char)data[0]), Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+
+    /**When the app closes, this onDestroy is called.
+     * This function shuts down bluetooth nicely**/
+    public void onDestroy(){
+
+        try {
+            bt.closeBT();
+        }catch(Exception e){}
+
+        super.onDestroy();
+    }
